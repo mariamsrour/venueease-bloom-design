@@ -2,26 +2,19 @@ import { Heart, MapPin, Users, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Venue } from "@/types/venue";
+import { formatPrice } from "@/lib/formatters";
 
-interface VenueCardProps {
-  id: string;
-  name: string;
-  image: string;
-  location: string;
-  capacity: number;
-  pricePerDay: number;
-  rating: number;
-  reviewCount: number;
-  featured?: boolean;
-  categories: string[];
-}
+type VenueCardProps = Venue;
 
 const VenueCard = ({
+  id,
   name,
-  image,
+  images,
   location,
   capacity,
-  pricePerDay,
+  pricing,
   rating,
   reviewCount,
   featured,
@@ -34,7 +27,7 @@ const VenueCard = ({
       {/* Image Container */}
       <div className="relative overflow-hidden aspect-[4/3]">
         <img
-          src={image}
+          src={images[0]}
           alt={name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
@@ -77,31 +70,35 @@ const VenueCard = ({
       {/* Content */}
       <div className="p-5 space-y-4">
         <div>
-          <h3 className="text-lg font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-1">
-            {name}
-          </h3>
+          <Link to={`/venue/${id}`}>
+            <h3 className="text-lg font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-1">
+              {name}
+            </h3>
+          </Link>
           <div className="flex items-center gap-1.5 text-muted-foreground text-sm mt-1">
             <MapPin className="w-4 h-4" />
-            <span className="line-clamp-1">{location}</span>
+            <span className="line-clamp-1">{location.city}, {location.state}</span>
           </div>
         </div>
 
         <div className="flex items-center justify-between pt-3 border-t border-border">
           <div className="flex items-center gap-1.5 text-muted-foreground">
             <Users className="w-4 h-4" />
-            <span className="text-sm">Up to {capacity} guests</span>
+            <span className="text-sm">Up to {capacity.max} guests</span>
           </div>
           <div className="text-right">
             <p className="text-2xl font-bold text-foreground">
-              ${pricePerDay.toLocaleString()}
+              {formatPrice(pricing.basePrice)}
             </p>
             <p className="text-xs text-muted-foreground">per day</p>
           </div>
         </div>
 
-        <Button className="w-full" variant="default">
-          View Details
-        </Button>
+        <Link to={`/venue/${id}`}>
+          <Button className="w-full" variant="default">
+            View Details
+          </Button>
+        </Link>
       </div>
     </div>
   );

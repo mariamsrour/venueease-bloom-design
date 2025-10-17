@@ -5,49 +5,11 @@ import VenueCard from "@/components/VenueCard";
 import { Button } from "@/components/ui/button";
 import { PartyPopper, Building2, TreeDeciduous, Building, Star, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-venue.jpg";
-import venueGarden from "@/assets/venue-garden.jpg";
-import venueRooftop from "@/assets/venue-rooftop.jpg";
-import venueBallroom from "@/assets/venue-ballroom.jpg";
+import { mockVenues } from "@/lib/mockData";
+import { Link } from "react-router-dom";
 
 const Index = () => {
-  const featuredVenues = [
-    {
-      id: "1",
-      name: "The Grand Garden Estate",
-      image: venueGarden,
-      location: "Napa Valley, CA",
-      capacity: 250,
-      pricePerDay: 5500,
-      rating: 4.9,
-      reviewCount: 127,
-      featured: true,
-      categories: ["Garden", "Wedding"],
-    },
-    {
-      id: "2",
-      name: "Skyline Rooftop Lounge",
-      image: venueRooftop,
-      location: "Manhattan, NY",
-      capacity: 150,
-      pricePerDay: 8200,
-      rating: 4.8,
-      reviewCount: 89,
-      featured: true,
-      categories: ["Rooftop", "Corporate"],
-    },
-    {
-      id: "3",
-      name: "Crystal Ballroom Palace",
-      image: venueBallroom,
-      location: "Beverly Hills, CA",
-      capacity: 400,
-      pricePerDay: 12000,
-      rating: 5.0,
-      reviewCount: 203,
-      featured: true,
-      categories: ["Ballroom", "Luxury"],
-    },
-  ];
+  const featuredVenues = mockVenues.filter(venue => venue.featured);
 
   const categories = [
     { icon: PartyPopper, name: "Wedding Halls", count: 342 },
@@ -162,10 +124,12 @@ const Index = () => {
                 Hand-picked premium venues for unforgettable events
               </p>
             </div>
-            <Button variant="outline" size="lg">
-              View All
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
+            <Link to="/search">
+              <Button variant="outline" size="lg">
+                View All
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
