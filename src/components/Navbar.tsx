@@ -38,12 +38,14 @@ const Navbar = () => {
             <Button variant="ghost" size="icon" aria-label="Saved venues">
               <Heart className="w-5 h-5" />
             </Button>
-            <Button variant="outline" size="default">
-              <User className="w-4 h-4 mr-2" />
-              Sign In
+            <Button variant="outline" size="default" asChild>
+              <Link to="/signin">
+                <User className="w-4 h-4 mr-2" />
+                Sign In
+              </Link>
             </Button>
-            <Button variant="default">
-              List Your Venue
+            <Button variant="default" asChild>
+              <Link to="/list-your-venue">List Your Venue</Link>
             </Button>
           </div>
 
@@ -86,12 +88,16 @@ const Navbar = () => {
               How It Works
             </Link>
             <div className="pt-4 space-y-3 border-t border-border">
-              <Button variant="outline" className="w-full">
-                <User className="w-4 h-4 mr-2" />
-                Sign In
+              <Button variant="outline" className="w-full" asChild>
+                <Link to="/signin" onClick={() => setIsMenuOpen(false)}>
+                  <User className="w-4 h-4 mr-2" />
+                  Sign In
+                </Link>
               </Button>
-              <Button variant="default" className="w-full">
-                List Your Venue
+              <Button variant="default" className="w-full" asChild>
+                <Link to="/list-your-venue" onClick={() => setIsMenuOpen(false)}>
+                  List Your Venue
+                </Link>
               </Button>
             </div>
           </div>
