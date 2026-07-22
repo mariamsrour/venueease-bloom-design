@@ -1,11 +1,16 @@
 import { Venue } from '@/types/venue';
 import { BookingAddon } from '@/types/booking';
+import venueBallroom from '@/assets/venue-ballroom.jpg';
+import venueGarden from '@/assets/venue-garden.jpg';
+import venueRooftop from '@/assets/venue-rooftop.jpg';
+import heroVenue from '@/assets/hero-venue.jpg';
+
 
 export const mockVenues: Venue[] = [
   {
     id: '1',
     name: 'Grand Ballroom at The Plaza',
-    images: ['/src/assets/venue-ballroom.jpg', '/src/assets/hero-venue.jpg'],
+    images: [venueBallroom, heroVenue, venueGarden, venueRooftop],
     location: {
       address: '123 Main Street',
       city: 'New York',
@@ -61,7 +66,7 @@ export const mockVenues: Venue[] = [
   {
     id: '2',
     name: 'Sunset Garden Terrace',
-    images: ['/src/assets/venue-garden.jpg', '/src/assets/venue-rooftop.jpg'],
+    images: [venueGarden, venueRooftop, heroVenue, venueBallroom],
     location: {
       address: '456 Garden Lane',
       city: 'Los Angeles',
@@ -108,7 +113,7 @@ export const mockVenues: Venue[] = [
   {
     id: '3',
     name: 'Skyline Rooftop Lounge',
-    images: ['/src/assets/venue-rooftop.jpg', '/src/assets/hero-venue.jpg'],
+    images: [venueRooftop, heroVenue, venueBallroom, venueGarden],
     location: {
       address: '789 High Street',
       city: 'Chicago',
